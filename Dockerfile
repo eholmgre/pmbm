@@ -17,7 +17,8 @@ WORKDIR /home/ubuntu/devel/pmbm
 RUN git submodule update --init
 
 WORKDIR /home/ubuntu/devel/pmbm/murty
-RUN make && \
-    make test
+RUN git submodule update --init && \
+    pip3 install . --user --break-system-packages && \
+    python3 tests/test_murty.py
 
 WORKDIR /home/ubuntu/devel
